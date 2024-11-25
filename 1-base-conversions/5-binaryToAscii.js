@@ -1,6 +1,8 @@
 // Translate the binary sequences in the
 // console.logs below to 8-bit ASCII strings:
 
+const { convertToBase10 } = require("./1-convertToBase10");
+
 /******************************************************************************/
 
 // Helper function to convert a binary string into an array of 8-bit strings
@@ -23,6 +25,17 @@ const binaryStringToArray = str => {
 
 const binaryToAscii = str => {
   // Your code here
+  let asciiString = "";
+  let binaryArr = binaryStringToArray(str);
+
+  binaryArr.forEach(bit => {
+    let binaryStr = '0b' + bit;
+    let binaryToBase10 = convertToBase10(binaryStr);
+
+    asciiString += String.fromCharCode(binaryToBase10);
+  });
+
+  return asciiString;
 };
 
 /******************************************************************************/
